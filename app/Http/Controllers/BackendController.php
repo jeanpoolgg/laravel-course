@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class BackendController extends Controller
 {
@@ -21,6 +21,6 @@ class BackendController extends Controller
             return response()->json($this->names[$id]);
         }
 
-        return response()->json(["error" => "Nombre no existente"], 404);
+        return response()->json(["error" => "Nombre no existente"], Response::HTTP_NOT_FOUND);
     }
 }
