@@ -17,10 +17,10 @@ class BackendController extends Controller
     }
 
     public function get(int $id = 0){
-        return response()->json([
-            "id" => $id,
-            "success" => true,
-            "message" => "Hola"
-        ]);
+        if(isset($this->names[$id])){
+            return response()->json($this->names[$id]);
+        }
+
+        return response()->json(["error" => "Nombre no existente"], 404);
     }
 }
