@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 
 class QueriesController extends Controller
@@ -70,6 +71,12 @@ class QueriesController extends Controller
         $products = Product::join("category", "product.category_id", "=", "category_id")->select("product.*", "category.name as category")->get();
 
         return response()->json($products);
+    }
+
+    public function groupBy(){
+        $result =  Product::join("category", "product.category_id", "=", "category_id")->select("category.id", "category.name", DB::raw("COUNT(product.id) as total"))->groupBy("category.id")->get();
+
+        return response()->json($result);
     }
 
 }

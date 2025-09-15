@@ -27,3 +27,4 @@ Route::get("/query/method/search/{name}/{price}", [QueriesController::class, "se
 Route::get("/query/method/searchString/{value}", [QueriesController::class, "searchString"]);
 Route::post("/query/method/advancedSearch", [QueriesController::class, "advancedSearch"]);
 Route::get("/query/method/join", [QueriesController::class, "join"]);
+Route::get("/query/method/groupby", [QueriesController::class, "groupBy"]);
