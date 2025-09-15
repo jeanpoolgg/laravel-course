@@ -27,4 +27,15 @@ class QueriesController extends Controller
         $products = Product::select("name")->orderBy("name", "desc")->get();
         return response()->json($products);
     }
+
+    public function searchName(string $name, string $price){
+        $products = Product::where("name", $name)
+        ->where("price", ">", $price)
+        ->orderBy("description")
+        ->select("name", "description")
+        ->get();
+
+        return response()->json($products);
+
+    }
 }

@@ -23,3 +23,4 @@ Route::delete("/backend/{id}", [BackendController::class, "delete"]);
 Route::get("/query", [QueriesController::class, "get"]);
 Route::get("/query/{id}", [QueriesController::class, "getById"]);
 Route::get("/query/method/names", [QueriesController::class, "getNames"]);
+Route::get("/query/method/search/{name}/{price}", [QueriesController::class, "searchName"]);
