@@ -66,4 +66,10 @@ class QueriesController extends Controller
         return response()->json($products);
     }
 
+    public function join(){
+        $products = Product::join("category", "product.category_id", "=", "category_id")->select("product.*", "category.name as category")->get();
+
+        return response()->json($products);
+    }
+
 }
