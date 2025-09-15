@@ -22,4 +22,9 @@ class QueriesController extends Controller
 
         return response()->json($product);
     }
+
+    public function getNames(){
+        $products = Product::select("name")->orderBy("name", "desc")->get();
+        return response()->json($products);
+    }
 }
